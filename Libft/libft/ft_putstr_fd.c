@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lukozime <lukozime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/04 18:08:17 by lukozime          #+#    #+#             */
-/*   Updated: 2024/12/04 18:27:12 by lukozime         ###   ########.fr       */
+/*   Created: 2024/11/08 21:28:38 by lukozime          #+#    #+#             */
+/*   Updated: 2024/11/11 12:57:59 by lukozime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 
-#include <mlx.h>
-
-int main(void) 
+void	ft_putstr_fd(char *s, int fd)
 {
-	void	*mlx;
-	void	*mlx_win;
+	int	i;
 
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1440, 3200, "HELLO WORLD");
-	mlx_loop(mlx);
-	return (0);
+	i = 0;
+	if (!s)
+		return ;
+	while (s[i])
+	{
+		write(fd, &s[i], 1);
+		i++;
+	}
 }
