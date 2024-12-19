@@ -5,12 +5,10 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lukozime <lukozime@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 18:36:11 by lukozime          #+#    #+#             */
-/*   Updated: 2024/11/04 18:36:34 by lukozime         ###   ########.fr       */
+/*   Created: 2022/11/10 16:59:39 by luozimek          #+#    #+#             */
+/*   Updated: 2024/12/07 16:04:29 by lukozime         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int	ft_atoi(const char *str)
 {

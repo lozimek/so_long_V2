@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lukozime <lukozime@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luozimek <luozimek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 17:02:33 by lukozime          #+#    #+#             */
-/*   Updated: 2024/11/16 10:55:19 by lukozime         ###   ########.fr       */
+/*   Created: 2022/11/09 11:35:00 by luozimek          #+#    #+#             */
+/*   Updated: 2023/03/31 19:54:40 by luozimek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,15 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	unsigned int	i;
-
-	i = 0;
-	if (!c)
-		return ((char *)s + ft_strlen(s));
-	while (s[i])
+	if (!s)
+		return (NULL);
+	while (*s != '\0')
 	{
-		if (s[i] == (char)c)
-			return ((char *)s + i);
-		i++;
+		if (*s == (char)c)
+			return ((char *)s);
+		s++;
 	}
-	if (s[i] == (char)c)
-		return ((char *)s + i);
-	return (0);
+	if (*s == (char)c)
+		return ((char *)s);
+	return (NULL);
 }
-/*#include <stdio.h>
-
-int	main()
-{
-	printf("%s", ft_strchr("", 'w'));
-	return (0);
-}*/

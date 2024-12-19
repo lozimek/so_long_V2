@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lukozime <lukozime@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luozimek <luozimek@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 16:01:30 by lukozime          #+#    #+#             */
-/*   Updated: 2024/11/11 13:10:02 by lukozime         ###   ########.fr       */
+/*   Created: 2022/11/16 18:17:15 by luozimek          #+#    #+#             */
+/*   Updated: 2022/11/24 11:41:26 by luozimek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,23 @@
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	unsigned int	i;
-	char			*dst;
+	char			*str;
 
-	if (!s)
-		return (NULL);
-	dst = ft_strdup(s);
-	if (!dst)
-		return (NULL);
 	i = 0;
-	if (s[i] && dst[i])
+	if (!s || !f)
+		return (0);
+	str = ft_strdup(s);
+	if (!str)
+		return (0);
+	if (s[i] && f && str[i])
 	{
-		while (dst[i])
+		while (str[i])
 		{
-			dst[i] = (f)(i, s[i]);
+			str[i] = f(i, s[i]);
 			i++;
 		}
 	}
-	dst[i] = '\0';
-	return (dst);
+	else
+	str[i] = '\0';
+	return (str);
 }

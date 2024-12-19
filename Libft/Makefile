@@ -6,7 +6,7 @@
 #    By: lukozime <lukozime@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/04 09:05:36 by lukozime          #+#    #+#              #
-#    Updated: 2024/12/13 18:53:54 by lukozime         ###   ########.fr        #
+#    Updated: 2024/12/19 11:30:33 by lukozime         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ SRCS_LIBFT = $(addprefix ${LIBFT_PATH}, ft_isalpha.c ft_isdigit.c ft_isalnum.c \
 			ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c \
 			ft_lstnew.c ft_lstadd_front.c ft_lstsize.c \
 			ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c \
-			ft_lstclear.c ft_lstiter.c ft_lstmap.c ft_putnbr_fd.c)
+			ft_lstclear.c ft_putnbr_fd.c)
 
 GNL_PATH = ./get_next_line/
 SRCS_GNL = $(addprefix $(GNL_PATH), get_next_line.c \
@@ -47,7 +47,7 @@ SRCS_GNL = $(addprefix $(GNL_PATH), get_next_line.c \
 
 FT_PRINTF_PATH = ./ft_printf/
 SRCS_FT_PRINTF = $(addprefix $(FT_PRINTF_PATH), ft_parscheck.c \
-												ft_my_function.c \
+												ft_my_fonctions.c \
 												ft_printf.c)
 
 #################### COMPILER ####################

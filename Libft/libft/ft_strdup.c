@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lukozime <lukozime@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luozimek <luozimek@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 17:20:39 by lukozime          #+#    #+#             */
-/*   Updated: 2024/11/06 18:45:27 by lukozime         ###   ########.fr       */
+/*   Created: 2022/11/12 13:46:47 by luozimek          #+#    #+#             */
+/*   Updated: 2022/11/24 12:44:42 by luozimek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,22 @@
 
 char	*ft_strdup(const char *src)
 {
-	char	*dst;
-	int		size;
 	int		i;
+	int		len;
+	char	*str;
 
-	size = ft_strlen(src);
-	dst = malloc(sizeof(char) * (size + 1));
-	if (!dst)
-		return (0);
+	len = 0;
+	while (src[len])
+		len++;
+	str = (char *)malloc(sizeof(*str) * (len + 1));
+	if (!str)
+		return (NULL);
 	i = 0;
-	while (size--)
+	while (i < len)
 	{
-		dst[i] = src[i];
+		str[i] = src[i];
 		i++;
 	}
-	dst[i] = '\0';
-	return (dst);
+	str[i] = '\0';
+	return (str);
 }
-
-/*#include <stdio.h>
-
-int	main()
-{
-	printf("%s", ft_strdup("coucou"));
-	return (0);
-}*/

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lukozime <lukozime@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luozimek <luozimek@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 16:01:08 by lukozime          #+#    #+#             */
-/*   Updated: 2024/11/06 12:01:56 by lukozime         ###   ########.fr       */
+/*   Created: 2022/11/11 12:08:45 by luozimek          #+#    #+#             */
+/*   Updated: 2022/11/13 22:07:59 by luozimek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	size_t	i;
 	size_t	j;
 
-	if ((!dst || !src))
+	if ((!dst || !src) && (dstsize == 0))
 		return (0);
-	if (dstsize == 0)
-		return (ft_strlen(src));
 	i = 0;
 	if (ft_strlen(dst) >= dstsize)
 		return (dstsize + ft_strlen(src));
@@ -34,12 +32,3 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	dst[j] = '\0';
 	return (ft_strlen(dst) + ft_strlen(&src[i]));
 }
-
-/*#include <stdio.h>
-#include <string.h>
-int	main()
-{
-	char	dst[50] = "salut";
-	printf("%ld\n", ft_strlcat(dst, "ca va?", 6));
-	return 0;
-}*/

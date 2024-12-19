@@ -3,38 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lukozime <lukozime@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luozimek <luozimek@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/06 10:11:37 by lukozime          #+#    #+#             */
-/*   Updated: 2024/11/16 15:01:17 by lukozime         ###   ########.fr       */
+/*   Created: 2022/11/12 14:58:55 by luozimek          #+#    #+#             */
+/*   Updated: 2022/11/13 20:09:58 by luozimek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	void	*ptr;
+	void	*t;
 
-	if (count != 0 && size > SIZE_MAX / count)
+	if (count == SIZE_MAX || size == SIZE_MAX)
 		return (NULL);
-	ptr = malloc(count * size);
-	if (ptr == NULL)
+	t = malloc(count * size);
+	if (!t)
 		return (NULL);
-	ft_bzero(ptr, count * size);
-	return (ptr);
+	ft_bzero (t, (count * size));
+	return (t);
 }
-
-// int main()
-// {
-// 	void *ptr;
-// 	//void *ptr2 = calloc(-5, -5);
-
-// 	//ptr = ft_calloc(-5, -5);
-// 	printf("test = %zu\n", (SIZE_MAX - 5) );
-// 	//printf("ft_calloc = %p\n", ptr);
-// 	//printf("calloc = %p\n", ptr2);
-// 	//free(ptr);
-// }

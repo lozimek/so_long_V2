@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lukozime <lukozime@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luozimek <luozimek@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/11 18:00:32 by lukozime          #+#    #+#             */
-/*   Updated: 2024/11/12 14:53:23 by lukozime         ###   ########.fr       */
+/*   Created: 2022/11/26 11:55:32 by luozimek          #+#    #+#             */
+/*   Updated: 2022/11/26 19:23:18 by luozimek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
-{
+void	ft_lstclear(t_list **lst, void (*del)(void*))
+{	
 	t_list	*tmp;
 	t_list	*next;
 

@@ -3,52 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lukozime <lukozime@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luozimek <luozimek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/07 13:58:01 by lukozime          #+#    #+#             */
-/*   Updated: 2024/11/22 16:27:13 by lukozime         ###   ########.fr       */
+/*   Created: 2022/11/14 16:26:51 by luozimek          #+#    #+#             */
+/*   Updated: 2023/03/29 15:26:35 by luozimek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *left_str, char *buff)
 {
-	char	*dst;
-	int		i;
-	int		j;
+	size_t	i;
+	size_t	j;
+	char	*str;
 
-	i = -1;
-	j = -1;
-	if (!s1 && !s2)
-		return (ft_strdup(""));
-	if (!s1)
-		return (ft_strdup(s2));
-	if (!s2)
-		return (ft_strdup(s1));
-	dst = malloc(ft_strlen((char *)s1) + ft_strlen((char *)s2) + 1);
-	if (!dst)
+	if (!left_str)
+	{
+		left_str = (char *)malloc(1 * sizeof(char));
+		left_str[0] = '\0';
+	}
+	if (!left_str || !buff)
 		return (NULL);
-	while (s1[++i])
-		dst[i] = s1[i];
-	while (s2[++j])
-		dst[i + j] = s2[j];
-	dst[i + j] = '\0';
-	return (dst);
+	str = malloc(sizeof(char) * ((ft_strlen(left_str) + ft_strlen(buff)) + 1));
+	if (str == NULL)
+		return (NULL);
+	i = -1;
+	j = 0;
+	if (left_str)
+		while (left_str[++i] != '\0')
+			str[i] = left_str[i];
+	while (buff[j] != '\0')
+		str[i++] = buff[j++];
+	str[ft_strlen(left_str) + ft_strlen(buff)] = '\0';
+	free(left_str);
+	return (str);
 }
-
-// #include <stdio.h>
-
-// int  main()
-// {
-//      printf("%s", ft_strjoin(NULL, "test"));
-//      return (0);
-// }
-
-// #include <stdio.h>
-
-// int	main(void)
-// {
-// 	printf("%s", ft_strjoin(NULL, "test"));
-// 	return (0);
-// }

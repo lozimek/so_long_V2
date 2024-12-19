@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luozimek <luozimek@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 17:33:11 by luozimek          #+#    #+#             */
-/*   Updated: 2023/02/18 17:06:30 by luozimek         ###   ########.fr       */
+/*   Created: 2023/01/16 10:22:57 by luozimek          #+#    #+#             */
+/*   Updated: 2023/02/24 12:10:01 by luozimek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "get_next_line.h"
+#include <fcntl.h>
+#include <stdio.h>
 
-size_t	ft_strlen(const char *str)
+int	main(void)
 {
-	size_t	i;
+	int		fd;
+	char	*line;
 
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	fd = (open("txt.txt", O_RDONLY));
+	line = get_next_line(fd);
+	while (line)
+	{
+		printf("%s", line);
+		free(line);
+		line = get_next_line(fd);
+	}
+	return (0);
 }

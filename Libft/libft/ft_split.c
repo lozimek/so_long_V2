@@ -3,74 +3,61 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lukozime <lukozime@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luozimek <luozimek@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/08 11:27:33 by lukozime          #+#    #+#             */
-/*   Updated: 2024/11/16 10:24:47 by lukozime         ###   ########.fr       */
+/*   Created: 2022/11/20 15:42:19 by luozimek          #+#    #+#             */
+/*   Updated: 2022/12/18 14:25:01 by luozimek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	count_words(const char *s, char c)
+static int	count(char **str, char const *s, char c)
 {
+	int	i;
 	int	count;
 
+	i = 0;
 	count = 0;
-	while (*s)
+	while (s[i])
 	{
-		if (*s != c && (*(s + 1) == c || *(s + 1) == '\0'))
-			count++;
-		s++;
+		while (s[i] && s[i] != c)
+			i++;
+		if (str)
+			str[count] = ft_substr(s, 0, i);
+		if (str && str[count] == NULL)
+			return (-1);
+		count++;
+		while (s[i] && s[i] == c)
+			i++;
+		s = s + i;
+		i = 0;
 	}
 	return (count);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**strs;
-	int		len;
 	int		i;
+	char	**str;
 
-	strs = malloc((count_words(s, c) + 1) * sizeof(char *));
-	if (!s || !strs)
+	if (!s)
 		return (NULL);
-	i = 0;
-	while (*s)
+	while (*s && *s == c)
+		s++;
+	str = ft_calloc(count(NULL, s, c) + 1, sizeof(char *));
+	if (!str)
+		return (NULL);
+	if (count(str, s, c) == -1)
 	{
-		while (*s == c)
-			s++;
-		if (*s)
+		i = 0;
+		while (str[i])
 		{
-			if (!ft_strchr(s, c))
-				len = ft_strlen(s);
-			else
-				len = ft_strchr(s, c) - s;
-			strs[i++] = ft_substr(s, 0, len);
-			s += len;
+			free(str[i]);
+			i++;
 		}
+		free(str);
+		return (NULL);
 	}
-	strs[i] = NULL;
-	return (strs);
+	return (str);
 }
-
-// #include <stdio.h>
-
-// int	main(void)
-// {
-// 	char str[] = "  Petit  test de split a vous de me dire  ";
-// 	char c = ' ';
-// 	char **split_result;
-// 	int i = 0;
-
-// 	split_result = ft_split(str, c);
-// 	printf("Résultat du split :\n");
-// 	while (split_result[i])
-// 	{
-// 		printf("'%s'\n", split_result[i]);
-// 		free(split_result[i]);
-// 		i++;
-// 	}
-// 	free(split_result);
-// 	return (0);
-// }

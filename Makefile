@@ -16,7 +16,7 @@ FRAMEWORKS = -Lmlx -lmlx -lXext -lX11 -lm
 RM = rm -rf
 
 #################### SOURCES ##################
-SRCS = so_circle_triangle_square.c
+SRCS = so_long.c error.c check_map.c config_game.c
 
 #################### COMPILER ####################
 CC = cc
@@ -36,7 +36,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@${MAKE} -s -C $(LIBFT_DIR)
-	@$(CC) $(CFLAGS) $(OBJS) $(FRAMEWORKS) $(LIBFT) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) -lmlx $(FRAMEWORKS) $(LIBFT) -o $(NAME)
 	@printf "${YELLOW}       All files compiled successfully${DEF}"
 	@echo "\n---------------------------------------------".
 	@printf "\n${GREEN}        [SO_LONG IS NOW READY ! ✨]\n${DEF}\n"

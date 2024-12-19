@@ -3,25 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lukozime <lukozime@student.42.fr>          +#+  +:+       +#+        */
+/*   By: luozimek <luozimek@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/12 16:16:04 by lukozime          #+#    #+#             */
-/*   Updated: 2024/11/14 19:09:40 by lukozime         ###   ########.fr       */
+/*   Created: 2022/12/05 13:59:43 by luozimek          #+#    #+#             */
+/*   Updated: 2022/12/05 14:00:40 by luozimek         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-
-# include <limits.h>
 # include <stdarg.h>
+# include <stdlib.h>
 # include <unistd.h>
 
-int		ft_printf(const char *format, ...);
 int		ft_parscheck(char c, va_list *args);
-int		ft_myputchar(char c);
-int		ft_myputstr(char *str);
-int		ft_myputnbr(int long long nb);
-int		ft_myputbase(unsigned long long nb, char *base);
-int		ft_handle_pointer(void *ptr);
+int		ft_printf(const char *format, ...);
+int		ft_putchar(int c);
+int		ft_putstr(char *str);
+int		ft_myputnbr(long long nb);
+int		ft_putbase(unsigned long long nbr, char *base);
 #endif
